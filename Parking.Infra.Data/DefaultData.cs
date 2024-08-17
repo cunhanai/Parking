@@ -1,4 +1,6 @@
-﻿namespace Parking.Infra.Data.Entities.Data
+﻿using Parking.Domain;
+
+namespace Parking.Infra.Data
 {
     /// <summary>
     /// Responsável por definir os valores padrões das entidades que serão adicionados

@@ -24,4 +24,8 @@
     <Folder Include="Migrations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Parking.Domain\Parking.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

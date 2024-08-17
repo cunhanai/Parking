@@ -1,4 +1,4 @@
-﻿namespace Parking.Infra.Data.Entities
+﻿namespace Parking.Domain
 {
     /// <summary>
     /// Veículo que entrou no estacionamento

@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Parking.Infra.Data.Entities;
-using Parking.Infra.Data.Entities.Data;
+using Parking.Domain;
 
 namespace Parking.Infra.Data.Mappings
 {

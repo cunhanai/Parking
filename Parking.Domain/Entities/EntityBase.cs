@@ -1,4 +1,4 @@
-﻿namespace Parking.Infra.Data.Entities
+﻿namespace Parking.Domain
 {
     /// <summary>
     /// Entidade base para todas as outras entidades
