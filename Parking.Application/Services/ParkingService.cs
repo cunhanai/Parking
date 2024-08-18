@@ -85,7 +85,7 @@ namespace Parking.Application.Services
                 Plate = vehicle.Plate,
                 EntryDate = vehicle.EntryDate.ToString(),
                 DepartureDate = vehicle.DepartureDate.HasValue ? vehicle.DepartureDate.Value.ToString() : "-",
-                Duration = duration.ToString("hh:mm:ss"),
+                Duration = duration.ToString(),
                 ChargedTime = chargedTime.ToString(),
                 PricingValue = FormatValue(chargedValue),
                 InitialHourPricing = FormatValue(pricing.InitialHourValue),
