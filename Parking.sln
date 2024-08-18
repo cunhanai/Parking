@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parking.Infra.Data", "Parki
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parking.Domain", "Parking.Domain\Parking.Domain.csproj", "{04691C6F-70F0-4D23-9072-B227409B992D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parking.Application", "Parking.Application\Parking.Application.csproj", "{A1C01213-D958-4299-BC24-06C1ED5A9CFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parking.CrossCutting", "Parking.CrossCutting\Parking.CrossCutting.csproj", "{56318BB5-CD8E-4CA2-A0EA-C2B01438C3CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{04691C6F-70F0-4D23-9072-B227409B992D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04691C6F-70F0-4D23-9072-B227409B992D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04691C6F-70F0-4D23-9072-B227409B992D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1C01213-D958-4299-BC24-06C1ED5A9CFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1C01213-D958-4299-BC24-06C1ED5A9CFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1C01213-D958-4299-BC24-06C1ED5A9CFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1C01213-D958-4299-BC24-06C1ED5A9CFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56318BB5-CD8E-4CA2-A0EA-C2B01438C3CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56318BB5-CD8E-4CA2-A0EA-C2B01438C3CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56318BB5-CD8E-4CA2-A0EA-C2B01438C3CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56318BB5-CD8E-4CA2-A0EA-C2B01438C3CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,5 @@
 using Parking.Infra.Data.Extensions;
+using Parking.Application.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,9 +10,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Configure Database
-builder.Services.AddDatabase()
-                .MigrateDatabase();
+// Configure application
+builder.Services.AddInfrastructure()
+                .MigrateDatabase()
+                .AddServices();
 
 var app = builder.Build();
 
