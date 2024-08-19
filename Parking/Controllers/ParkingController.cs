@@ -30,7 +30,7 @@ namespace Parking.Controllers
         /// </summary>
         /// <param name="vehicleDto">Placa e data de entrada do veículo</param>
         [HttpPost("entry")]
-        public void SetNewEntry([FromForm] VehicleDto vehicleDto)
+        public void SetNewEntry([FromBody] VehicleDto vehicleDto)
         {
             _parkingService.SetNewEntry(vehicleDto);
         }
@@ -40,7 +40,7 @@ namespace Parking.Controllers
         /// </summary>
         /// <param name="vehicleDto">Placa e data de saída do veículo</param>
         [HttpPost("departure")]
-        public void SetDeparture([FromForm] VehicleDto vehicleDto)
+        public void SetDeparture([FromBody] VehicleDto vehicleDto)
         {
             _parkingService.SetDeparture(vehicleDto);
         }

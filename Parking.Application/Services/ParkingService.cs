@@ -31,19 +31,29 @@ namespace Parking.Application.Services
 
         public void SetNewEntry(VehicleDto vehicleDto)
         {
+            ValidateData(vehicleDto);
+
             var vehicle = GetVehicle(vehicleDto.Plate);
 
             if (vehicle != null && !vehicle.DepartureDate.HasValue)
                 throw new Exception($"O veículo de placa {vehicleDto.Plate} já está estacionado!");
 
-            vehicle = new Vehicle(vehicleDto.Plate, DateTime.Parse(vehicleDto.Date));
+            vehicle = new Vehicle(vehicleDto.Plate, DateTime.ParseExact(vehicleDto.Date, "dd/MM/yyyy HH:mm:ss", new CultureInfo("pt-br")));
 
             _vehicleRepository.Add(vehicle);
             _vehicleRepository.Commit();
         }
 
+        private static void ValidateData(VehicleDto vehicleDto)
+        {
+            if (string.IsNullOrWhiteSpace(vehicleDto.Plate) || string.IsNullOrWhiteSpace(vehicleDto.Date))
+                throw new Exception("Dados inválidos!");
+        }
+
         public void SetDeparture(VehicleDto vehicleDto)
         {
+            ValidateData(vehicleDto);
+
             var vehicle = GetVehicle(vehicleDto.Plate);
 
             if (vehicle == null || vehicle.DepartureDate.HasValue)
@@ -85,7 +95,7 @@ namespace Parking.Application.Services
                 Plate = vehicle.Plate,
                 EntryDate = vehicle.EntryDate.ToString(),
                 DepartureDate = vehicle.DepartureDate.HasValue ? vehicle.DepartureDate.Value.ToString() : "-",
-                Duration = duration.ToString(),
+                Duration = duration.ToString(@"hh\:mm\:ss"),
                 ChargedTime = chargedTime.ToString(),
                 PricingValue = FormatValue(chargedValue),
                 InitialHourPricing = FormatValue(pricing.InitialHourValue),

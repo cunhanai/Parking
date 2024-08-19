@@ -1,5 +1,7 @@
 using Parking.Infra.Data.Extensions;
 using Parking.Application.Extensions;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +27,23 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+
+var supportedCultures = new[] {
+    new CultureInfo("pt-BR")
+};
+
+app.UseRouting()
+.UseCors(cors => cors
+      .AllowAnyOrigin()
+      .AllowAnyMethod()
+      .AllowAnyHeader()
+).UseRequestLocalization(new RequestLocalizationOptions()
+{
+    DefaultRequestCulture = new RequestCulture("pt-BR"),
+    SupportedCultures = supportedCultures,
+    SupportedUICultures = supportedCultures
+});
 
 app.UseAuthorization();
 
