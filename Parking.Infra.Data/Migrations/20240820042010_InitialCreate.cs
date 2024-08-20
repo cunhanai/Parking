@@ -51,7 +51,7 @@ namespace Parking.Infra.Data.Migrations
                 columns: new[] { "Id", "AditionalHourValue", "EndDate", "InitialDate", "InitialHourValue", "ToleranceMinutes" },
                 values: new object[,]
                 {
-                    { 1, 1m, new DateTime(2024, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 2m, 10 },
+                    { 1, 1.75m, new DateTime(2024, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 3m, 15 },
                     { 2, 1m, new DateTime(2024, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 2m, 10 }
                 });
         }

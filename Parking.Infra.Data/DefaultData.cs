@@ -16,7 +16,7 @@ namespace Parking.Infra.Data
         {
             return
             [
-                new Pricing(1, new DateTime(2024, 1, 1), new DateTime(2024, 6, 30), 2, 1, 10),
+                new Pricing(1, new DateTime(2024, 1, 1), new DateTime(2024, 6, 30), 3, (decimal)1.75, 15),
                 new Pricing(2, new DateTime(2024, 7, 1), new DateTime(2024, 12, 31), 2, 1, 10),
             ];
         }

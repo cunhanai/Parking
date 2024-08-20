@@ -22,7 +22,7 @@ namespace Parking.Infra.Data.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Parking.Infra.Data.Entities.Pricing", b =>
+            modelBuilder.Entity("Parking.Domain.Pricing", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -53,11 +53,11 @@ namespace Parking.Infra.Data.Migrations
                         new
                         {
                             Id = 1,
-                            AditionalHourValue = 1m,
+                            AditionalHourValue = 1.75m,
                             EndDate = new DateTime(2024, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             InitialDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            InitialHourValue = 2m,
-                            ToleranceMinutes = 10
+                            InitialHourValue = 3m,
+                            ToleranceMinutes = 15
                         },
                         new
                         {
@@ -70,7 +70,7 @@ namespace Parking.Infra.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Parking.Infra.Data.Entities.Vehicle", b =>
+            modelBuilder.Entity("Parking.Domain.Vehicle", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
