@@ -14,5 +14,11 @@ namespace Parking.Infra.Data.Repositories
         {
             return GetAll().FirstOrDefault(first => date >= first.InitialDate && date <= first.EndDate);
         }
+
+        public bool ExistsPricingPeriod(DateTime initialDate, DateTime endDate)
+        {
+            return GetAll().Any(any => (initialDate >= any.InitialDate && initialDate <= any.EndDate) ||
+                                       (endDate >= any.InitialDate && initialDate <= any.EndDate));
+        }
     }
 }

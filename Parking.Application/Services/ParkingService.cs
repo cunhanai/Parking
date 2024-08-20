@@ -1,8 +1,8 @@
 ﻿using Parking.Application.Dtos;
+using Parking.Application.Extensions;
 using Parking.Application.Interfaces;
 using Parking.Domain;
 using Parking.Domain.Repositories;
-using System.Globalization;
 
 namespace Parking.Application.Services
 {
@@ -38,17 +38,12 @@ namespace Parking.Application.Services
             if (vehicle != null && !vehicle.DepartureDate.HasValue)
                 throw new Exception($"O veículo de placa {vehicleDto.Plate} já está estacionado!");
 
-            vehicle = new Vehicle(vehicleDto.Plate, DateTime.ParseExact(vehicleDto.Date, "dd/MM/yyyy HH:mm:ss", new CultureInfo("pt-br")));
+            vehicle = new Vehicle(vehicleDto.Plate, vehicleDto.Date.ToDateTime());
 
             _vehicleRepository.Add(vehicle);
             _vehicleRepository.Commit();
         }
 
-        private static void ValidateData(VehicleDto vehicleDto)
-        {
-            if (string.IsNullOrWhiteSpace(vehicleDto.Plate) || string.IsNullOrWhiteSpace(vehicleDto.Date))
-                throw new Exception("Dados inválidos!");
-        }
 
         public void SetDeparture(VehicleDto vehicleDto)
         {
@@ -66,6 +61,17 @@ namespace Parking.Application.Services
         }
 
         #region private methods
+
+        /// <summary>
+        /// Verifica se os dados que vem da request estão válidos
+        /// </summary>
+        /// <param name="vehicleDto"></param>
+        /// <exception cref="Exception"></exception>
+        private static void ValidateData(VehicleDto vehicleDto)
+        {
+            if (string.IsNullOrWhiteSpace(vehicleDto.Plate) || string.IsNullOrWhiteSpace(vehicleDto.Date))
+                throw new Exception("Dados inválidos!");
+        }
 
         /// <summary>
         /// Busca um veículo registrado no banco
@@ -94,22 +100,12 @@ namespace Parking.Application.Services
             {
                 Plate = vehicle.Plate,
                 EntryDate = vehicle.EntryDate.ToString(),
-                DepartureDate = vehicle.DepartureDate.HasValue ? vehicle.DepartureDate.Value.ToString() : "-",
-                Duration = duration.ToString(@"hh\:mm\:ss"),
+                DepartureDate = vehicle.DepartureDate.ToStringOrDefault("-"),
+                Duration = duration.ToStringHour(),
                 ChargedTime = chargedTime.ToString(),
-                PricingValue = FormatValue(chargedValue),
-                InitialHourPricing = FormatValue(pricing.InitialHourValue),
+                PricingValue = chargedValue.GetCurrency(),
+                InitialHourPricing = pricing.InitialHourValue.GetCurrency(),
             };
-        }
-
-        /// <summary>
-        /// Formata um valor monetário para a moeda padrão
-        /// </summary>
-        /// <param name="value">Valor para formatação</param>
-        /// <returns>O valor formatado em real</returns>
-        private string FormatValue(decimal value)
-        {
-            return value.ToString("C", new CultureInfo("pt-BR"));
         }
 
         #endregion
