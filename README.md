@@ -13,7 +13,7 @@ Este repositório compreende apenas o back-end do projeto. Para acessar o front-
 
 ## Setup
 
-### Alterando connection string com o banco de dados
+### Alterando connection string do o banco de dados
 
 Atualmente a connection string para conecção com o postgres está definida como <code>Host=localhost;Port=5432;Database=Parking;User Id=postgres;Password=postgres;</code>. É provável que seja necessário alterá-la para funcionar no seu dispositivo caso alguma das informações seja diferente.
 
