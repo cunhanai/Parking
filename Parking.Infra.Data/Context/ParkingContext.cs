@@ -5,6 +5,8 @@ namespace Parking.Infra.Data.Context
 {
     public class ParkingContext : DbContext
     {
+        private const string CONNECTION_STRING = "Host=localhost;Port=5432;Database=Parking;User Id=postgres;Password=postgres;";
+
         private const string MAPPING_PATH = "Parking.Infra.Data.Mappings";
 
         public ParkingContext(DbContextOptions options) : base(options)
@@ -21,11 +23,8 @@ namespace Parking.Infra.Data.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // todo: get it from appsettings
-            var connectionString = "Host=localhost;Port=5432;Database=Parking;User Id=postgres;Password=postgres;";
-
-            if (!string.IsNullOrWhiteSpace(connectionString) )
-                optionsBuilder.UseNpgsql(connectionString);
+            if (!string.IsNullOrWhiteSpace(CONNECTION_STRING) )
+                optionsBuilder.UseNpgsql(CONNECTION_STRING);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
